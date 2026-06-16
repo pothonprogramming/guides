@@ -1,0 +1,20 @@
+This document is intended to help with the setup of a vertically oriented monitor on Fedora.
+
+1. Identify the monitor:
+wlr-randr
+
+Note: your display name might look like HDMI-A-2
+
+Note: you can temporarily change the orientation of your monitor:
+wl-randr --output <YOUR_DISPLAY_NAME> --transform 90
+
+2. Update the kernel arguments:
+sudo grubby --update-kernel=ALL --args="video=<YOUR_DISPLAY_NAME>:panel_orientation=left_side_up"
+
+Note: you can also use right_side_up
+
+3. To remove the argument:
+sudo grubby --update-kernel=ALL --remove-args="video=<YOUR_DISPLAY_NAME>:panel_orientation=left_side_up"
+
+4. To see default arguments:
+sudo grubby --info=DEFAULT
