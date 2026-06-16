@@ -1,0 +1,1 @@
+These guides are specific to Fedora Sway spin.
