@@ -1,5 +1,0 @@
-You may want to move your mouse between screens while using Fedora Sway. This guide can help.
-
-1. Create a .conf file in /etc/sway/conf.d with your monitor setup.
-
-This guide is incomplete.
