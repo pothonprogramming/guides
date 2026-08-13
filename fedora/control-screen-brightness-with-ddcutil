@@ -1,0 +1,18 @@
+You can control the brightness of external monitors using ddcutil on the command line.
+
+1. Install ddcutil:
+$ sudo dnf install ddcutil
+
+2. Try to detect your monitors (you should see all monitors listed with model numbers for identification):
+# if this doesn't work, try again using sudo
+$ ddcutil detect
+
+3. Check to see the current brightness:
+# Use the numbers found by detect as your display parameter
+# 10 is the VCP code 0x10, which is for Brightness
+$ ddcutil --display=1 getvcp 10
+
+4. Set new brightness levels
+# Use the current and max values found by getvcp 10 as a guide for what you can safely enter
+# The second parameter of the setvcp command is your desired brightness level, probably on a scale of 0 to 100
+$ ddcutil --display=1 setvcp 10 50
