@@ -1,0 +1,34 @@
+Use this document to set up a global monitor layout configuration in Fedora Sway environments.
+This only works at the Desktop
+
+1. Detect your monitors with swaymsg:
+
+  swaymsg -t get_outputs
+
+  Note:
+  * Look for the value following "Output". For example, your monitor name might by DP-4.
+  * Also notice the "Current mode" and "Position values" for each monitor.
+
+2. Create a file called monitors.conf in /etc/sway/config.d and for each monitor add a line like this:
+
+  output <monitor_name> pos <x> <y>
+
+  Note:
+  * Your file can be called something other than monitors.conf, it just needs to have the .conf extension.
+  * You may need to use a terminal editor like nano to edit the file with root permissions: sudo nano <filename>.conf
+  * Example file content:
+
+  output DP-4 pos 0 0
+  output DP-5 pos 2560 -1000
+
+2.1 You can also add rotation settings to support vertical monitors by adding the transform parameter to the output command in your conf file:
+
+  output <monitor_name> pos <x> <y> transform 90
+
+  Note:
+  * Example file content:
+
+  output DP-4 pos 0 0 transform 0
+  output DP-5 pos 2560 -1000 transform 270
+
+3. Save the file and restart your Sway session by logging out and back in again.
